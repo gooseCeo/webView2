@@ -34,6 +34,7 @@ namespace webBrowser
             this.back = new System.Windows.Forms.Button();
             this.forward = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.fYoutube = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@ namespace webBrowser
             this.url.Name = "url";
             this.url.Size = new System.Drawing.Size(723, 21);
             this.url.TabIndex = 1;
+            this.url.MouseClick += new System.Windows.Forms.MouseEventHandler(this.url_MouseClick);
             this.url.KeyDown += new System.Windows.Forms.KeyEventHandler(this.url_KeyDown);
             // 
             // go
@@ -53,6 +55,7 @@ namespace webBrowser
             this.go.TabIndex = 2;
             this.go.Text = "이동";
             this.go.UseVisualStyleBackColor = true;
+            this.go.Click += new System.EventHandler(this.go_Click);
             // 
             // back
             // 
@@ -85,11 +88,22 @@ namespace webBrowser
             this.webView21.TabIndex = 5;
             this.webView21.ZoomFactor = 1D;
             // 
+            // fYoutube
+            // 
+            this.fYoutube.Location = new System.Drawing.Point(893, 0);
+            this.fYoutube.Name = "fYoutube";
+            this.fYoutube.Size = new System.Drawing.Size(75, 23);
+            this.fYoutube.TabIndex = 6;
+            this.fYoutube.Text = "유투브";
+            this.fYoutube.UseVisualStyleBackColor = true;
+            this.fYoutube.Click += new System.EventHandler(this.fYoutube_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 629);
+            this.Controls.Add(this.fYoutube);
             this.Controls.Add(this.forward);
             this.Controls.Add(this.back);
             this.Controls.Add(this.go);
@@ -109,6 +123,7 @@ namespace webBrowser
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Button forward;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
+        private System.Windows.Forms.Button fYoutube;
     }
 }
 

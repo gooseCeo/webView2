@@ -29,5 +29,23 @@ namespace webBrowser
                 webView21.CoreWebView2.Navigate(url.Text);
             }
         }
+
+        private void url_MouseClick(object sender, MouseEventArgs e)
+        {
+            url.Text = "https://";
+        }
+
+        private async void fYoutube_Click(object sender, EventArgs e)
+        {
+            url.Text = "https://www.youtube.com/";
+            await webView21.EnsureCoreWebView2Async();
+            webView21.CoreWebView2.Navigate(url.Text);
+        }
+
+        private async void go_Click(object sender, EventArgs e)
+        {
+            await webView21.EnsureCoreWebView2Async();
+            webView21.CoreWebView2.Navigate(url.Text);
+        }
     }
 }
