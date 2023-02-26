@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Web.WebView2.Core;
 
 namespace webBrowser
 { 
@@ -14,7 +15,24 @@ namespace webBrowser
         public Form1()
         {
             InitializeComponent();
+            InitializeWebView2();
         }
+
+        private async void InitializeWebView2()
+        {
+            await webView21.EnsureCoreWebView2Async();
+
+            webView21.CoreWebView2.DOMContentLoaded += CoreWebView2_DOMContentLoaded;
+            webView21.CoreWebView2.Navigate("https://www.hybrid-analysis.com/login");
+        }
+
+        private async void CoreWebView2_DOMContentLoaded(object sender, CoreWebView2DOMContentLoadedEventArgs e)
+        {
+            //await webView21.ExecuteScriptAsync("document.getElementById('login_username').value = 'my_username'; document.getElementById('login_password').value = 'my_password'; document.getElementById('login_form').submit();");
+            await webView21.ExecuteScriptAsync("document.getElementById('login_email').value = 'my_username'; document.getElementById('login_password').value = 'my_password';document.getElementById('login-form').submit(); ");
+            webView21.CoreWebView2.DOMContentLoaded -= CoreWebView2_DOMContentLoaded;
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
