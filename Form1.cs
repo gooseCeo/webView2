@@ -65,5 +65,44 @@ namespace webBrowser
             await webView21.EnsureCoreWebView2Async();
             webView21.CoreWebView2.Navigate(url.Text);
         }
+
+        /* hybrid-analysis */
+        /*
+        private async void InitializeWebView2()
+        {
+            await webView21.EnsureCoreWebView2Async();
+
+            webView21.CoreWebView2.DOMContentLoaded += CoreWebView2_DOMContentLoaded;
+            webView21.CoreWebView2.Navigate("https://www.hybrid-analysis.com/submissions/sandbox/files");
+        }
+
+        private async void CoreWebView2_DOMContentLoaded(object sender, CoreWebView2DOMContentLoadedEventArgs e)
+        {
+            await webView21.ExecuteScriptAsync("document.querySelector('.mat-select-arrow-wrapper').click();");
+            await Task.Delay(1000);
+            await webView21.ExecuteScriptAsync("document.querySelector('.mat-option-text[value=\"100\"]').click();");
+            await Task.Delay(1000);
+            await webView21.ExecuteScriptAsync("document.querySelector('.fa-file-alt').click();");
+        }
+
+        private async void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        { 
+            string uri = webView.Source.ToString();
+            //if (e.IsSuccess && e.HttpStatusCode == 200 && uri == new Uri("https://www.hybrid-analysis.com/submissions/sandbox/files"))
+            if (e.IsSuccess && e.HttpStatusCode == 200)
+            {
+                string html = await webView21.ExecuteScriptAsync("document.documentElement.outerHTML");
+
+                string filePath = Path.Combine(Application.StartupPath, "result.html");
+
+                using (StreamWriter sw = new StreamWriter(filePath))
+                {
+                    await sw.WriteAsync(html);
+                }
+
+                MessageBox.Show("결과문이 " + filePath + " 에 저장되었습니다.");
+            }
+        }
+        */
     }
 }
